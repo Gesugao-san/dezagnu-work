@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "echo",
+            "label": "run",
             "type": "shell",
             "command": "py __main__.py",
             "problemMatcher": [],
@@ -12,6 +12,12 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "install",
+            "type": "shell",
+            "command": "pip install -r requirements.txt",
+            "problemMatcher": []
         }
     ]
 }
