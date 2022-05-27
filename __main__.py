@@ -1,38 +1,26 @@
-#!/usr/bin/env python3
-# encoding: UTF-8
-
-import sys
-from tkinter import *
-from functools import reduce
-import operator
-root=Tk()
-root.geometry("600x300")
-digital=Label(root,text="Введите цифры",font="times 24 bold")
-digital.grid(row=0,column=2)
-
-def clicked():
-    res = "Цифорки {}".format(number.get())
-    nota.configure(text=res)
-    nums = int(number.get())
-    print (nums)
-
-def Midline():
-    mid = "Цифроки {}".format(number.get())
-    mid.len = len(number.get().lst)
-    mid.avg = reduce(operator.add, number.lst) / mid.len
-    nota.configure(text=mid)
 
 
-nota=Label(root, text='Цифорки', font="times 15 bold")
-nota.grid(row=3,column=2)
+import tkinter as tk
+lst = []
 
-number = Entry(width=10)
-number.grid(row=4,column=2)
+def enterItems():
+    items = entry1.get()
+    lst = [int(item) for item in items.split()]
+    entry1.destroy()
+    button.destroy()
+    sum_num = 0
+    for t in lst:
+        sum_num = sum_num + t
+    avg = sum_num / len(lst)
+    displayText = tk.Text(root)
+    displayText.grid()
+    displayText.insert('1.0', 'List 1:\n' + str(lst) + '\nAverage: ' + str(avg))
 
-btn = Button(text="Вписать!", command=clicked)
-btn.grid(row=5,column=2)
 
-btn = Button(text="Среднее!", command=Midline)
-btn.grid(row=5,column=3)
-
-root.mainloop()
+if __name__== "__main__":
+    root = tk.Tk()
+    entry1 = tk.Entry(root, text = 'enter array here')
+    entry1.grid()
+    button = tk.Button(root, text = 'submit', command = enterItems)
+    button.grid()
+    root.mainloop()
